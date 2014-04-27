@@ -1,15 +1,15 @@
 #!/bin/bash
-#
-# A script to update a new VM to my usual needs
-# (Tested on Ubuntu 12.04)
-# Ask for new user password
 
-echo -e "enter the user pw\n:> "
-read PASSWD
- 
+# A script to update a new VM to my usual needs
 # To download this script
 # wget -c https://github.com/zaniphrom/bash/blob/master/systemSetup.sh && chmod 775 systemSetup.sh
  
+
+echo "just print as test"
+echo -e "enter the user pw\n:> "
+read PASSWD
+  
+
 # Usual update
 sudo apt-get -y update
 sudo apt-get -y dist-upgrade
