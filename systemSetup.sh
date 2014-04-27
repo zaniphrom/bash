@@ -2,13 +2,13 @@
 #
 # A script to update a new VM to my usual needs
 # (Tested on Ubuntu 12.04)
-
 # Ask for new user password
-	echo -e "enter the filepath of the folder you wish to make changes in:\c"
-	read PASSWD
+
+echo -e "enter the user pw\n:> "
+read PASSWD
  
 # To download this script
-# wget -c https://github.com/zaniphrom/bash/blob/master/systemSetup.sh 
+# wget -c https://github.com/zaniphrom/bash/blob/master/systemSetup.sh && chmod 775 systemSetup.sh
  
 # Usual update
 sudo apt-get -y update
