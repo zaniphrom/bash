@@ -1,8 +1,7 @@
 #!/bin/bash
-
 # A script to update a new VM to my usual needs
 # To download this script
-# sudo wget -c https://github.com/zaniphrom/bash/blob/master/systemSetup.sh && chmod 775 systemSetup.sh
+# sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/systemSetup.sh && chmod 775 systemSetup.sh
 echo -e "enter user password: "
 read PASSWD
 useradd -m -s /bin/bash -d /home/brian -U brian -p $PASSWD
@@ -16,7 +15,4 @@ sudo apt-get -y install unzip
 sudo pip install beautifulsoup4
 #Reminder to change user password
 clear
-echo "Change the new user password" * 5
-
-
-
+echo "Change the new user password with the passwd cmd to be safe"

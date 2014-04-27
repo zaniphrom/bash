@@ -1,6 +1,9 @@
 #!/bin/bash
 #A script to get HVC mining quickly
 #sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/hvcSetup.sh && chmod 775 hvcSetup.sh
+echo -e "This script will install, set up and run a heavycoin mine.\n do you wish to proceed [y|n]"
+read ANS
+[ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
 sudo dd if=/dev/zero of=/swapfile bs=64M count=16 
 sudo mkswap /swapfile
 sudo swapon /swapfile
