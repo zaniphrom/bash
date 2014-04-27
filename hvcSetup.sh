@@ -1,7 +1,6 @@
 #!/bin/bash
 #A script to get HVC mining quickly
 #sudo wget -c https://github.com/zaniphrom/bash/blob/master/hvcSetup.sh && chmod 775 hvcSetup.sh
-
 sudo dd if=/dev/zero of=/swapfile bs=64M count=16 
 sudo mkswap /swapfile
 sudo swapon /swapfile
@@ -18,5 +17,8 @@ make
 echo -e "Enter your wallet address pw\n:> "
 read WALLET
 echo "you will mine to $WALLET"
+echo -e "\n do you wish to proceed [y|n]"
+read ANS
+[ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
 nohup ./minerd -a heavy -v 512 -o stratum+tcp://hvcpool.1gh.com:5333 -u $WALLET -p heavymine & 
 echo "HeavyCoin now mining. See your progress with 'cat nohup.out | grep -ie yay"
