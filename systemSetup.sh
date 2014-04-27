@@ -8,14 +8,13 @@
 	read PASSWD
  
 # To download this script
-
-# wget -c http://chromedriver.googlecode.com/files/chromedriver_linux64_2.1.zip 
+# wget -c https://github.com/zaniphrom/bash/blob/master/systemSetup.sh 
  
 # Usual update
-sudo apt-get update
-sudo apt-get dist-upgrade
+sudo apt-get -y update
+sudo apt-get -y dist-upgrade
 sudo apt-get -y install python python-pip
-sudo pip install beautifulsoup4
+sudo apt-get -y install beautifulsoup4
 
 
 # make new user with sudo rights and home directory
