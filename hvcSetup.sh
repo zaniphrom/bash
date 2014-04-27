@@ -1,6 +1,6 @@
 #!/bin/bash
 #A script to get HVC mining quickly
-#sudo wget -c https://github.com/zaniphrom/bash/blob/master/hvcSetup.sh && chmod 775 hvcSetup.sh
+#sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/hvcSetup.sh && chmod 775 hvcSetup.sh
 sudo dd if=/dev/zero of=/swapfile bs=64M count=16 
 sudo mkswap /swapfile
 sudo swapon /swapfile
