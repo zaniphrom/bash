@@ -51,11 +51,11 @@
 	sudo mv -f $TMP config.js
 	clear
 	cat config.js
-	echo -e "\n If this config file looks ok.\n!!Check the URL: IP ADDRESS!!\nDo you wish to proceed [y|n]"
+	echo -e "\nIf this config file looks ok.\n!!Check the URL: $IPADDRESS!!\nDo you wish to proceed [y|n]"
 	read ANS
 	[ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
 	sudo npm install --production
-	sudo chown -R www-data:www-data ghost
+	cd .. && sudo chown -R www-data:www-data ghost
 
 # Installing nginx and setting it up to host ghost
 # again, only on the ipaddress. You will need to configure a domain
@@ -64,7 +64,7 @@
 	cd /etc/nginx/sites-available
 	sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/ghostconf.txt
 	sudo mv ghostconf.txt ghost.conf
-	IPADD="IPADDRESSHOLDER"
+	IPADD="IPADDRESS.HOLDER"
 	cat ghost.conf | sudo sed -e 's/$IPADD/$IPADDRESS/g' > $TMP
 	sudo mv -f $TMP ghost.conf
 	clear
@@ -78,7 +78,9 @@
 
 # Start ghost with the forever command & nginx	
 
-	sudo /home/$USERNAME/ghost/NODE_ENV=production forever start index.js
+	cd /home/$USERNAME/ghost
+	sudo NODE_ENV=production\ forever\ start\ index.js
+	sudo service ghost restart
 	sudo service nginx restart
 	clear
 	echo -e "Ghost, nginx, and nodejs are installed"
