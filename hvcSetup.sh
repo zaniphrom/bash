@@ -17,7 +17,7 @@ chmod a+x autogen.sh
 ./autogen.sh
 ./configure CFLAGS="-O3"
 make
-echo -e "Enter your wallet address pw\n:> "
+echo -e "Enter your HeavyCoin wallet address pw\n:> "
 read WALLET
 echo "you will mine to $WALLET"
 echo -e "\n do you wish to proceed [y|n]"
