@@ -24,4 +24,6 @@ echo -e "\n do you wish to proceed [y|n]"
 read ANS
 [ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
 nohup ./minerd -a heavy -v 512 -o stratum+tcp://hvcpool.1gh.com:5333 -u $WALLET -p heavymine & 
+echo "programme finished in a few moments"
+sleep 7
 echo "HeavyCoin now mining. See your progress with 'cat nohup.out | grep -ie yay"
