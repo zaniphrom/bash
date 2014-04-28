@@ -19,14 +19,15 @@
 	echo "This is your IP Address: $IPADDRESS"
 
 # Set up a new user with home directory to store ghost install
+# Uncomment if necessary
 
-	echo -e "Creating new user. Enter new user name: "
-	read USERNAME
-	echo -e "Creating new user. Enter new user password: "
-	read PASSWD
-	useradd -m -s /bin/bash -d /home/$USERNAME -U $USERNAME -p $PASSWD
-	sudo usermod -a -G sudo $USERNAME
-	echo "New user created"
+#	echo -e "Creating new user. Enter new user name: "
+#	read USERNAME
+#	echo -e "Creating new user. Enter new user password: "
+#	read PASSWD
+#	useradd -m -s /bin/bash -d /home/$USERNAME -U $USERNAME -p $PASSWD
+#	sudo usermod -a -G sudo $USERNAME
+#	echo "New user created"
 
 # Download ghost dependencies, Ghost and set up some of them from new user home
 	mkdir -p /var/www/
@@ -87,4 +88,4 @@
 	clear
 	echo -e "Ghost, nginx, and nodejs are installed"
 	echo -e "You need to configure them now"
-	echo -e "To test this install, type your IP Address into a browser\n$IPADDRESS"
+	echo -e "To test this install, type your IP Address into a browser\n$CONFIGIP"
