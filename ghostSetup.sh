@@ -23,6 +23,10 @@
 	sudo usermod -a -G sudo $USERNAME
 	echo "New user created"
 
+# Set up traps
+	TMP="/tmp/$0.1"
+	trap "rm -f $TMP; echo 'removing $TMP'" 0 1 2 3 4 5 
+
 # Download ghost dependencies, Ghost and set up some of them from new user home
 	cd /home/$USERNAME
 # Base updates and installs
@@ -41,8 +45,9 @@
 
 	cd ghost/
 	sudo cp config.example.js config.js
-	sudo sed -i 's/http\:\/\/my-ghost-blog.com/$IPADDRESS/' config.js
-	clear
+	GHOSTURL="http\:\/\/my-ghost-blog.com"
+	cat config.js | sudo sed -e "s/$GHOSTURL/$IPADDRESS/g" > $TMP
+	sudo mv -f $TMP config.js
 	cat config.js
 	echo -e "\n If this config file looks ok.\n!!Check the URL: IP ADDRESS!!\nDo you wish to proceed [y|n]"
 	read ANS
@@ -57,7 +62,8 @@
 	cd /etc/nginx/sites-available
 	sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/ghostconf.txt
 	sudo mv ghostconf.txt ghost.conf
-	sudo sed -i 's/server_name IPADDRESSHOLDER;/server_name $IPADDRESS;/' ghost.conf
+	cat ghost.conf | sudo sed -e 's/server_name IPADDRESSHOLDER;/server_name $IPADDRESS;/g' > $TMP	
+	sudo mv -f $TMP ghost.conf
 	clear
 	cat ghost.conf
 	echo -e "\n If this config file looks ok.\n!!Check the IP Address!!\nDo you wish to proceed [y|n]"
