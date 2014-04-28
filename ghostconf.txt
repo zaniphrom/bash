@@ -1,3 +1,5 @@
+# Default virtual host file
+
 server {
         listen 80;
         server_name IPADDRESS_HOLDER ;
