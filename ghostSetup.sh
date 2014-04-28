@@ -29,6 +29,7 @@
 	echo "New user created"
 
 # Download ghost dependencies, Ghost and set up some of them from new user home
+	mkdir -p /var/www/
 	cd /var/www/
 # Base updates and installs
 	sudo apt-get -y install python-software-properties 
