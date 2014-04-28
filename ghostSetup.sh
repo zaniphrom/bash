@@ -64,7 +64,7 @@
 	sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/ghostconf.txt
 	sudo mv ghostconf.txt ghost.conf
 	IPADD="IPADDRESSHOLDER"
-	sudo sed -i 's/$IPADD/$IPADDRESS/' ghost.conf
+	sudo sed -i 's/$IPADD/$IPADDRESS/g' ghost.conf
 	cat ghost.conf
 	echo $IPADDRESS
 	echo -e "\n If this config file looks ok.\n!!Check the IP Address!!\nDo you wish to proceed [y|n]"
