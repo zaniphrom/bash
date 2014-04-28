@@ -48,7 +48,9 @@
 	cd ghost/
 	sudo cp config.example.js config.js
 	GHOSTURL="http\:\/\/my-ghost-blog.com"
-	cat config.js | sudo sed -e "s/$GHOSTURL/$IPADDRESS/g" > $TMP
+	CONFIGIP="http\:\/\/$IPADDRESS"
+	ECHO "$CONFIGIP"
+	cat config.js | sudo sed -e "s/$GHOSTURL/$CONFIGIP/g" > $TMP
 	sudo mv -f $TMP config.js
 	clear
 	cat config.js
