@@ -3,6 +3,11 @@
 # To download this script
 # sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/ghostSetup.sh && chmod 775 ghostSetup.sh
 
+
+# Set up traps
+	TMP="/tmp/$0.1"
+	trap "rm -f $TMP; echo 'removing $TMP'" 0 1 2 3 4 5 
+
 #Let the user know what is happening
 
 	echo -e "This script will install Python, Node.Js, Ghost, forever and nginx.\nDo you wish to proceed? [y|n]"
@@ -22,10 +27,6 @@
 	useradd -m -s /bin/bash -d /home/$USERNAME -U $USERNAME -p $PASSWD
 	sudo usermod -a -G sudo $USERNAME
 	echo "New user created"
-
-# Set up traps
-	TMP="/tmp/$0.1"
-	trap "rm -f $TMP; echo 'removing $TMP'" 0 1 2 3 4 5 
 
 # Download ghost dependencies, Ghost and set up some of them from new user home
 	cd /home/$USERNAME
@@ -63,8 +64,9 @@
 	sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/ghostconf.txt
 	sudo mv ghostconf.txt ghost.conf
 	IP="IPADDRESSHOLDER"
-	cat ghost.conf | sudo sed -e 's/$IP/$IPADDRESS/g' > $TMP	
-	sudo mv -f $TMP ghost.conf
+	echo $IPADDRESS
+	cat ghost.conf | sudo sed -e "s/$IP/$IPADDRESS/g" > $TMP1	
+	sudo mv -f $TMP1 ghost.conf
 	clear
 	cat ghost.conf
 	echo -e "\n If this config file looks ok.\n!!Check the IP Address!!\nDo you wish to proceed [y|n]"
