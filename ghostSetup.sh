@@ -7,8 +7,6 @@ echo -e "This script will install Python, Node.Js, Ghost, forever and nginx.\n D
 read ANS
 [ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
 
-IPADDRESS = `ifconfig | grep 'inet addr:' | grep -v '127.0.0.1' | awk '{print $2}' | cut -f2 -d:`
-
 # Set up a new user with home directory to put ghost
 
 echo -e "Creating new user. Enter new user name: "
@@ -38,5 +36,4 @@ sudo apt-get -y install nginx
 sudo service nginx start
 clear
 echo -e "Ghost, nginx, and nodejs are installed"
-echo -e "See $IPADDRESS"
 echo -e "You need to configure them now"
