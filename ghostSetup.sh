@@ -63,11 +63,7 @@
 	cd /etc/nginx/sites-available
 	sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/ghostconf.txt
 	sudo mv ghostconf.txt ghost.conf
-	IP="IPADDRESSHOLDER"
-	echo $IPADDRESS
-	cat ghost.conf | sudo sed -e "s/$IP/$IPADDRESS/g" > $TMP1	
-	sudo mv -f $TMP1 ghost.conf
-	clear
+	sudo sed -i 's/server_name IPADDRESSHOLDER;/server_name $IPADDRESS;/' ghost.conf
 	cat ghost.conf
 	echo -e "\n If this config file looks ok.\n!!Check the IP Address!!\nDo you wish to proceed [y|n]"
 	read ANS
