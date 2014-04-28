@@ -63,8 +63,10 @@
 	cd /etc/nginx/sites-available
 	sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/ghostconf.txt
 	sudo mv ghostconf.txt ghost.conf
-	sudo sed -i 's/server_name IPADDRESSHOLDER;/server_name $IPADDRESS;/' ghost.conf
+	IPADD="IPADDRESSHOLDER"
+	sudo sed -i 's/$IPADD/$IPADDRESS/' ghost.conf
 	cat ghost.conf
+	echo $IPADDRESS
 	echo -e "\n If this config file looks ok.\n!!Check the IP Address!!\nDo you wish to proceed [y|n]"
 	read ANS
 	[ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
