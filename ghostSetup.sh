@@ -79,7 +79,7 @@
 # Start ghost with the forever command & nginx	
 
 	sudo /home/$USERNAME/ghost/NODE_ENV=production forever start index.js
-	sudo service nginx start
+	sudo service nginx restart
 	clear
 	echo -e "Ghost, nginx, and nodejs are installed"
 	echo -e "You need to configure them now"
