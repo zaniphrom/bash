@@ -29,7 +29,7 @@
 	echo "New user created"
 
 # Download ghost dependencies, Ghost and set up some of them from new user home
-	cd /home/$USERNAME
+	cd /var/www/
 # Base updates and installs
 	sudo apt-get -y install python-software-properties 
 	sudo apt-add-repository ppa:chris-lea/node.js -y
@@ -78,7 +78,7 @@
 
 # Start ghost with the forever command & nginx	
 
-	cd /home/$USERNAME/ghost
+	cd /var/www/ghost
 	STARTGHOST="NODE_ENV=production forever start index.js"
 	sudo $STARTGHOST
 	sudo service ghost restart
