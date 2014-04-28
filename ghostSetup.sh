@@ -41,8 +41,8 @@
 
 	cd ghost/
 	sudo cp config.example.js config.js
-	GHOSTURL="url: 'http://my-ghost-blog.com',"
-	NEWGHOSTURL="url: $IPADDRESS,"
+	GHOSTURL="http://my-ghost-blog.com"
+	NEWGHOSTURL="$IPADDRESS"
 	echo "changing $GHOSTURL to $NEWGHOSTURL in config.js"
 	sleep 5
 	sudo sed -i 's/$GHOSTURL/$NEWGHOSTURL/' config.js
