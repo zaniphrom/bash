@@ -58,7 +58,6 @@
 	read ANS
 	[ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
 	sudo npm install --production
-	sudo npm start --production
 	cd .. && sudo chown -R www-data:www-data ghost
 
 # Installing nginx and setting it up to host ghost
@@ -75,7 +74,6 @@
 	echo -e "\n If this config file looks ok.\n!!Check the IP Address: $IPADDRESS!!\nDo you wish to proceed [y|n]"
 	read ANS
 	[ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
-	sudo chown -R www-data:www-data ghost.conf
 	sudo ln -s /etc/nginx/sites-available/ghost.conf /etc/nginx/sites-enabled/ghost.conf	
 	sudo rm /etc/nginx/sites-enabled/default
 
@@ -84,7 +82,6 @@
 	cd /var/www/ghost
 	STARTGHOST="NODE_ENV=production forever start index.js"
 	sudo $STARTGHOST
-	sudo service ghost restart
 	sudo service nginx restart
 	cd ~ && rm -rf tmp
 	clear
