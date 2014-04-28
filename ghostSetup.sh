@@ -62,7 +62,8 @@
 	cd /etc/nginx/sites-available
 	sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/ghostconf.txt
 	sudo mv ghostconf.txt ghost.conf
-	cat ghost.conf | sudo sed -e 's/server_name IPADDRESSHOLDER;/server_name $IPADDRESS;/g' > $TMP	
+	IP="IPADDRESSHOLDER"
+	cat ghost.conf | sudo sed -e 's/$IP/$IPADDRESS/g' > $TMP	
 	sudo mv -f $TMP ghost.conf
 	clear
 	cat ghost.conf
