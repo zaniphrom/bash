@@ -1,5 +1,5 @@
 server {
-        listen 80;
+        listen 0.0.0.0:80;
         server_name IPADDRESS_HOLDER ;
         location / {
            proxy_set_header Host $Host;
@@ -7,3 +7,4 @@ server {
             proxy_buffering off;
                 }
         }   
+
