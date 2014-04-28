@@ -41,7 +41,7 @@
 
 	cd ghost/
 	sudo cp config.example.js config.js
-	GHOSTURL="http://my-ghost-blog.com"
+	GHOSTURL="http:\/\/my-ghost-blog.com"
 	NEWGHOSTURL="$IPADDRESS"
 	echo "changing $GHOSTURL to $NEWGHOSTURL in config.js"
 	sleep 5
