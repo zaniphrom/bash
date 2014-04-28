@@ -43,10 +43,7 @@
 	sudo cp config.example.js config.js
 	GHOSTURL="url: 'http://my-ghost-blog.com',"
 	NEWGHOSTURL="url: $IPADDRESS,"
-	clear
-	echo $NEWGHOSTURL
-	sleep 2
-	sudo sed -i "s/$GHOSTURL/$NEWGHOSTURL/" config.js
+	sudo sed -i 's/$GHOSTURL/$NEWGHOSTURL/' config.js
 	clear
 	cat config.js
 	echo -e "\n If this config file looks ok.\n!!Check the URL: IP ADDRESS!!\nDo you wish to proceed [y|n]"
