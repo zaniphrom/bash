@@ -39,7 +39,7 @@
 # Basic ghost configuration to run on your IP address
 # You will need to change it to your domain
 
-	sudo cd ghost/
+	cd ghost/
 	sudo cp config.example.js config.js
 	sudo sed -i "s/url: 'http://my-ghost-blog.com,'/url: '$IPADDRESS,'/" config.js
 	sudo npm install --production
@@ -49,7 +49,7 @@
 # again, only on the ipaddress. You will need to configure a domain
 
 	sudo apt-get -y install nginx
-	sudo cd /etc/nginx/sites-available
+	cd /etc/nginx/sites-available
 	sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/ghostconf.txt
 	sudo mv ghostconf.txt ghost.conf
 	sudo sed -i 's/server_name IPADDRESSHOLDER;/server_name $IPADDRESS;/' ghost.conf
@@ -69,3 +69,4 @@
 	clear
 	echo -e "Ghost, nginx, and nodejs are installed"
 	echo -e "You need to configure them now"
+	echo -e "To test this install, type your IP Address into a browser\n$IPADDRESS"
