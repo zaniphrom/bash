@@ -41,7 +41,12 @@
 
 	cd ghost/
 	sudo cp config.example.js config.js
-	sudo sed -i "s/url: 'http://my-ghost-blog.com,'/url: '$IPADDRESS,'/" config.js
+	sudo sed -i "s/url: 'http://my-ghost-blog.com',/url: $IPADDRESS,/" config.js
+	clear
+	cat config.js
+	echo -e "\n If this config file looks ok.\n!!Check the URL: IP ADDRESS!!\nDo you wish to proceed [y|n]"
+	read ANS
+	[ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
 	sudo npm install --production
 	sudo chown -R www-data:www-data ghost
 
