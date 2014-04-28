@@ -65,7 +65,7 @@
 	sudo wget -c https://raw.githubusercontent.com/zaniphrom/bash/master/ghostconf.txt
 	sudo mv ghostconf.txt ghost.conf
 	IPADD="IPADDRESS.HOLDER"
-	cat ghost.conf | sudo sed -e 's/$IPADD/$IPADDRESS/g' > $TMP
+	cat ghost.conf | sudo sed -e "s/$IPADD/$IPADDRESS/g" > $TMP
 	sudo mv -f $TMP ghost.conf
 	clear
 	cat ghost.conf
