@@ -49,6 +49,7 @@
 	GHOSTURL="http\:\/\/my-ghost-blog.com"
 	cat config.js | sudo sed -e "s/$GHOSTURL/$IPADDRESS/g" > $TMP
 	sudo mv -f $TMP config.js
+	clear
 	cat config.js
 	echo -e "\n If this config file looks ok.\n!!Check the URL: IP ADDRESS!!\nDo you wish to proceed [y|n]"
 	read ANS
@@ -66,6 +67,8 @@
 	IPADD="IPADDRESSHOLDER"
 	cat ghost.conf | sudo sed -e 's/$IPADD/$IPADDRESS/g' > $TMP
 	sudo mv -f $TMP ghost.conf
+	clear
+	cat ghost.conf
 	echo -e "\n If this config file looks ok.\n!!Check the IP Address: $IPADDRESS!!\nDo you wish to proceed [y|n]"
 	read ANS
 	[ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
