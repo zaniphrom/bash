@@ -55,6 +55,7 @@
 	read ANS
 	[ $ANS == "n" ] && echo "exiting....." && sleep 1 && exit 0 || echo "programme running"
 	sudo npm install --production
+	sudo npm start --production
 	cd .. && sudo chown -R www-data:www-data ghost
 
 # Installing nginx and setting it up to host ghost
