@@ -88,4 +88,4 @@
 	clear
 	echo -e "Ghost, nginx, and nodejs are installed"
 	echo -e "You need to configure them now"
-	echo -e "To test this install, type your IP Address into a browser\n$CONFIGIP"
+	echo -e "To test this install, type your IP Address into a browser\n$IPADDRESS"
