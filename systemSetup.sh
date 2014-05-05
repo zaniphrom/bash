@@ -34,14 +34,16 @@ fi
 # Usual installs
 	sudo apt-get -y install python python-pip
 	sudo apt-get -y install unzip
-	sudo pip install beautifulsoup4
-	sudo pip install selenium
-	sudo pip install html5lib
-
 	sudo apt-get -y install firefox
 	sudo apt-get -y install google-chrome
 	sudo apt-get -y install openjdk-7-jre
 	sudo apt-get -y install xvfb imagemagick x11vnc 
+	
+	sudo pip install beautifulsoup4
+	sudo pip install selenium
+	sudo pip install html5lib
+	sudo pip install pyvirtualdisplay
+
 
 #Reminder to change user password
 	clear
