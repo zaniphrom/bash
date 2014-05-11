@@ -14,8 +14,8 @@ BACKUPTAR="$BACKUPDIR.tar.gz"
 
 #Define the paths to the folders
 BRIANPATH="/var/www/ghost"
-BRIANCVPATH="/var/www/ghost_cv"
-SONJAPATH="/var/www/ghost_sonja"
+BRIANCVPATH="/var/www/ghost_cv/ghost"
+SONJAPATH="/var/www/ghost_sonja/ghost"
 
 # Set up backup dir
 
@@ -36,7 +36,7 @@ SONJAPATH="/var/www/ghost_sonja"
 
 	if [ -e "$BRIANPATH" ] ; then 
 		cd $BRIANPATH
-		cp index.js $BACKUPDIR/brian
+		cp config.js $BACKUPDIR/brian
 		cp -r content/themes $BACKUPDIR/brian
 		cp -r content/images $BACKUPDIR/brian
 		echo -e "Backing up $BRIANPATH"
@@ -49,7 +49,7 @@ SONJAPATH="/var/www/ghost_sonja"
 
 	if [ -e "$SONJAPATH" ] ; then 
 		cd $SONJAPATH
-		cp index.js $BACKUPDIR/sonja
+		cp config.js $BACKUPDIR/sonja
 		cp -r content/themes $BACKUPDIR/sonja
 		cp -r content/images $BACKUPDIR/sonja
 		echo -e "Backing up $SONJAPATH"
@@ -62,7 +62,7 @@ SONJAPATH="/var/www/ghost_sonja"
 
 	if [ -e "$BRIANCVPATH" ] ; then 
 		cd $BRIANCVPATH
-		cp index.js $BACKUPDIR/cv
+		cp config.js $BACKUPDIR/cv
 		cp -r content/themes $BACKUPDIR/cv
 		cp -r content/images $BACKUPDIR/cv
 		echo -e "Backing up $BRIANCVPATH"
