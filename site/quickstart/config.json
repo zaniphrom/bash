@@ -1,0 +1,14 @@
+{
+    "baseURL": "http://errright.com/",
+    "title": "ErrRight",
+    "theme": "errright",
+    "publishDir": "_build",
+    "metaDataFormat": "json",
+    "staticDir": "_static",
+    "themesDir": "_themes",
+    "menus": ["123", "321"],
+    "params": {
+        "description": "Generic Description",
+        "body_classes": "abc-123 bg-re"
+    }
+}

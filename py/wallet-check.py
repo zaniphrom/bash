@@ -1,41 +1,66 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import json
 import requests
-import datetime
-import csv
 
-# Create date time stamp
-now = datetime.datetime.utcnow()
-bitstamp = "https://www.bitstamp.net/api/ticker/"
-filename = "wallets.csv"
+# from requests.exceptions import ConnectionError
+import datetime
+import copy
+import sys
+import time
 
 # Get the BitStamp last sold price
-bitstamp = requests.get(bitstamp, timeout=0.5)
-source = bitstamp.json()
-spot = source["last"]
-print "\nTime: \t%s\nSpot: \t$%s" % \
-      (now, (float(spot)))
 
-# Get a list of BTC wallets saved in the CSV file
-reader = csv.reader(open(filename, 'rU'))
-wallets = reader.next()
 
-# Empty tally list to tot them all up
-tally = []
+def last_price():
+    bit_url = "https://www.bitstamp.net/api/ticker/"
+    try:
+        bitstamp = requests.get(bit_url, timeout=0.5)
+        bitstamp.raise_for_status()
+    except requests.exceptions.HTTPError as e:  # This is the correct syntax
+        print(e)
+        sys.exit(1)
+    else:
+        source = bitstamp.json()
+        spot = source["last"]
+        return float(spot)
 
-# Run through all the wallets and find out whats in each
-for w in wallets:
-    url = "https://blockchain.info/address/{}?format=json".format(w)
-    print "\nWallet:\t%s" % w
-    check = requests.get(url)
-    raw = check.json()
-    ubtc = raw["final_balance"]
-    balance = round(float(ubtc * .00000001), 8)
-    tally.append(balance)
-    print "BTC: \t%s\nValue: \t$%s" % \
-          (balance, round((float(spot) * balance), 7))
 
-# Add up the totals
-total_value = round(float(spot) * sum(tally))
-print ("\nTotals\nBTC: \tB %s\nValue: \t$ {:,.2f}".format(total_value)) \
-      % (sum(tally))
+def wallet_totals(*argv):
+    totals = []
+    dict = {}
+    for arg in argv:
+        block_url = "https://blockchain.info/rawaddr/{}".format(arg)
+        now = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f")
+        check = requests.get(block_url)
+        raw = check.json()
+        ubtc = raw["final_balance"]
+        # totals.append(ubtc)
+        dict.update(
+            timestamp=str(now),
+            wallet=arg,
+            holding=ubtc / int(100000000),
+            spot_price_usd=last_price(),
+            total_value_usd=round((ubtc * last_price()) / int(100000000), 2),
+        )
+        # print(dict)
+        totals.append(copy.copy(dict))
+    # return json.dumps(totals, sort_keys=True, indent=4)
+    return pretty_json(totals)
+
+
+def pretty_json(raw_json):
+    return json.dumps(raw_json, sort_keys=True, indent=4)
+
+
+# def myFun(*argv):
+#   for arg in argv:
+#     print (arg)
+#
+# myFun("1MgWyAqaD3AtJhYF66DoKJfBHKS8LHTaXs", "3JjPf13Rd8g6WAyvg8yiPnrsdjJt1NP4FC")
+# wallet_totals()
+
+print(
+    wallet_totals(
+    )
+)
